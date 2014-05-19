@@ -5,8 +5,16 @@ $(function() {
 
   // Cuando la conección es exitosa le preguntamos al user
   // su nick mediante un prompt y lo emitimos al servidor
+  
+  var nick = prompt("Ingresa tu Nick: ");
+  while(nick == null || !isNaN(nick)) {
+    nick = prompt ("Por favor Ingrese un Nombre valido ");
+  }
+
+
   socket.on("connect", function() {
-      socket.emit("nick", prompt("Nick?"));
+    //  socket.emit("nick", prompt("Ingresa tu Nick: "));
+     socket.emit("nick",nick);
   });
 
   $('#msg-input input').keypress(function(e) {
